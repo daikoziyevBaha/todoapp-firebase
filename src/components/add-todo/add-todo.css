@@ -1,0 +1,60 @@
+.add-todo {
+  width: 100%;
+}
+.add-todo .btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: inherit;
+  border: none;
+  color: #3D82EB;
+}
+form {
+  padding: 1rem;
+  width: 500px;
+  background: white;
+  border-radius: 4px;
+}
+form .text h2 {
+  text-align: center;
+}
+form .text input {
+  margin: 0;
+  padding: 1rem;
+  width: 90%;
+  margin-bottom: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+form .text input :last-child {
+  margin-bottom: 0;
+}
+form .text ul {
+  list-style: none;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+  margin-block-start: 0;
+}
+form .text .close-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  background: inherit;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+form .text .create-btn {
+  background-color: #218838;
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: none;
+  width: 100%;
+  padding: 0.5rem;
+}
+/*# sourceMappingURL=add-todo.css.map */
