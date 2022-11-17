@@ -18,6 +18,9 @@
   width: 15%;
   justify-content: flex-end;
 }
+.todo :hover {
+  box-shadow: 0px 0px 0px 0px;
+}
 .action-btn {
   width: 100%;
   background-color: white;

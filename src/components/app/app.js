@@ -7,7 +7,7 @@ const App = () => {
     return (
         <main>
             <Modal 
-                open = {false}
+                show = {false}
             />
             <TodoLayout />
         </main>

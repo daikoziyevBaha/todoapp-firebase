@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import './todo-layout.css';
 import Header from "../header";
 import TodoList from "../todo-list";
-import addIcon from '../../assets/images/plus.svg';
+import AddTodo from "../add-todo";
 
 const TodoLayout = () => {
+    
     return (
         <div className="container">
             <div className="content">
@@ -13,10 +14,7 @@ const TodoLayout = () => {
                     <div className="todo-app__list">
                         <TodoList />
                     </div>
-                    <div className="todo-app__add_todo">
-                        <img src={addIcon} alt="add" className="icon"/>
-                        <span>Create New Item</span>
-                    </div>
+                    <AddTodo />
                 </div>
             </div>
         </div>
