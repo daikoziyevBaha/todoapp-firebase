@@ -1,22 +1,34 @@
 import React from "react";
 import './todo.css';
-import removeIcon from '../../assets/images/remove.svg';
-import editIcon from '../../assets/images/edit.svg';
+import {XCircle, CheckCircleFill, Circle} from 'react-bootstrap-icons';
+import EditTodo from "../edit-todo";
 
-const Todo = () => {
+const Todo = ({todo}) => {
     return (
-        <li className="todo-item">
-            <div className="todo">
-                <div className="todo__value">
-                    <input type="checkbox" style={{width: "16px", height: "16px", borderRadius: "50%"}}/>
-                    <span>todo</span>
+        <li className="todo">
+            <div className="todo-container">
+                <div className="todo-container__value">
+                    { todo.checked
+                        ? (
+                            <span className="checked">
+                                <CheckCircleFill color="#bebebe" />
+                            </span> )
+                        : (
+                            <span className="unchecked">
+                                <Circle color={'blue'} />
+                            </span>
+                        )
+                    }
+                    <div className="todo-preview">
+                        <span className="todo-preview title">{todo.title}</span>
+                        <span className="todo-preview date">{todo.date}-{todo.time}</span>
+                        <div className={todo.checked ? 'line-through' : ''}></div>
+                    </div> 
                 </div>
-                <div className="todo__actions">
+                <div className="todo-container__actions">
+                    <EditTodo />
                     <button className="action-btn">
-                        <img src={editIcon} alt="edit" className="icon" />
-                    </button>
-                    <button className="action-btn">
-                        <img src={removeIcon} alt="remove" className="icon" />
+                        <XCircle color="red" size={"18px"} />
                     </button>
                 </div>
             </div>

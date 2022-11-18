@@ -1,7 +1,7 @@
-.add-todo {
+.edit-todo {
   width: 100%;
 }
-.add-todo .btn {
+.edit-todo .btn {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -10,4 +10,4 @@
   border: none;
   color: #3D82EB;
 }
-/*# sourceMappingURL=add-todo.css.map */
+/*# sourceMappingURL=edit-todo.css.map */

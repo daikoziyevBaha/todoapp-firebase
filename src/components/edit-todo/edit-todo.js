@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import './add-todo.css';
-import addIcon from '../../assets/images/plus.svg';
-import Modal from "../modal";
+import { Pencil } from "react-bootstrap-icons";
 import TodoForm from "../todo-form";
+import Modal from "../modal";
+import './edit-todo.css';
 
-const AddTodo = () => {
+const EditTodo = () => {
     const [showModal, setShowModal] = useState(false)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -26,23 +26,18 @@ const AddTodo = () => {
             });
         }
     }
-    const addTodo = (event) => {
-        event.preventDefault();
-        const data = new FormData();
-        console.log(data);
-    }
+
     return (
-        <div className="add-todo">
-            <button
-                className="add-todo btn"
+        <div className="edit-todo">
+            <button 
+                className="action-btn"
                 onClick={() => setShowModal(true)}
-            >
-                <img src={addIcon} alt="add" className="icon"/>
-                <span>Create New Item</span>
+            >   
+                <Pencil size={"18px"} />
             </button>
             <Modal showModal={showModal} setShowModal={setShowModal}>
                 <TodoForm 
-                    heading="Create New Item"
+                    heading="Edit item"
                     title = {title}
                     setTitle = {setTitle}
                     description = {description}
@@ -59,4 +54,4 @@ const AddTodo = () => {
     )
 }
 
-export default AddTodo;
+export default EditTodo;
