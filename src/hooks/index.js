@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import firebase from "../firebase";
+import { sortTodosByDate } from "../services";
+import { firestore } from "../firebase";
+import { collection, doc, getDocs, onSnapshot, onValue } from "firebase/firestore";
 
 const useTodos = () => {
-    console.log("useTodos");
     const [todos, setTodos] = useState([])
     
-    useEffect( () => {
-        let unsubscribe = firebase
-            .firestore()
-            .collection('todos')
-            .onSnapshot( snapshot => {
+    useEffect(() => {
+        let unsubscribe = onSnapshot(collection(firestore, "todos"),
+            (snapshot) => {
                 const data = snapshot.docs.map( doc => {
                     return {
                         id: doc.id,
                         ...doc.data()
                     }
                 })
-                setTodos(data)
-            })   
-        return () => unsubscribe() 
+                setTodos(sortTodosByDate(data))
+        })
+        return () => unsubscribe()
     }, [])
 
     return todos

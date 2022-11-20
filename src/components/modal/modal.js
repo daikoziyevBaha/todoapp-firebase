@@ -15,6 +15,12 @@ const Modal = ({ children, showModal, setShowModal }) => {
         <div className="modal" ref={modalRef} onClick={(e) => closeModal(e)}>
             <div className="modal-container">
                 { children }
+                <button
+                    onClick={() => setShowModal(false)}
+                    className="close-btn"
+                >
+                    <span>X</span>
+                </button>
             </div>
         </div>
     )

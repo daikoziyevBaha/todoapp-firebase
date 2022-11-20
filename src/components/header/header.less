@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
 
     &__title {
         display: flex;
@@ -12,7 +13,31 @@
         color: #323232;
     }
     &__buttons {
+        display: flex;
 
+        button {
+            background-image: #fff;
+            box-sizing: border-box;
+            color: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            font-size: 12px;
+            justify-content: center;
+            padding: .5rem 1.25rem;
+            text-decoration: none;
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        :first-child{
+            border-radius: 4px 0 0 4px;
+        }
+
+        :last-child {
+            border-radius: 0 4px 4px 0;
+        }
     }   
 }
 
@@ -21,4 +46,9 @@
     padding-top: 15px;
     width: 44px;
     height: 44px;
+}
+
+.active {
+    background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    color: #fff;
 }

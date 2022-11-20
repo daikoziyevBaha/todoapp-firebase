@@ -1,5 +1,6 @@
 import React from "react";
 import './todo-form.css';
+import { XCircle } from "react-bootstrap-icons";
 
 const TodoForm = ({
     handleSubmit,
@@ -14,7 +15,8 @@ const TodoForm = ({
     setTime,
     filesList=[],
     handleUploadFile,
-    setShowModal = false
+    submitButtonTest,
+    handleRemoveFile
 }) => {
     return (
         <form>
@@ -43,6 +45,7 @@ const TodoForm = ({
                     value={time}
                     onChange={e => setTime(e.target.value)} />
                 <input 
+                    className="input-file"
                     id='file' 
                     name='file'
                     type='file' 
@@ -50,13 +53,27 @@ const TodoForm = ({
                     onChange={handleUploadFile}
                     multiple />
                 <div>
-                    {filesList.length != 0 && (
+                    {filesList && filesList.length !== 0 && (
                         <div>
                             <h3>Uploaded Files:</h3>
                             <ul>
                                 {
-                                    filesList.map( (item, index) => {
-                                        return <li key={String(index)}>{item}</li>
+                                    filesList.map( (item) => {
+                                        return (
+                                            <div className="file" key={item.id}>
+                                                <a 
+                                                    href={item.url} 
+                                                    target="_blank"
+                                                >
+                                                    <li>{item.name}</li>
+                                                </a>
+                                                <XCircle 
+                                                    color="red"
+                                                    size={"18px"}
+                                                    onClick={() => handleRemoveFile(item)}
+                                                />
+                                            </div>
+                                        )
                                     })
                                 }
                             </ul>
@@ -65,14 +82,9 @@ const TodoForm = ({
                 </div>
                 <button
                     className="create-btn"
+                    onClick={handleSubmit}
                 >
-                    <span>Create</span>
-                </button>
-                <button
-                    onClick={() => setShowModal(false)}
-                    className="close-btn"
-                >
-                    <span>X</span>
+                    <span>{submitButtonTest}</span>
                 </button>
             </div>
         </form>

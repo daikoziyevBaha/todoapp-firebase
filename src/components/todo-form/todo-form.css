@@ -7,6 +7,10 @@ form {
 form .text h2 {
   text-align: center;
 }
+form .text h3 {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
 form .text input {
   margin: 0;
   padding: 1rem;
@@ -19,11 +23,21 @@ form .text input {
 form .text input :last-child {
   margin-bottom: 0;
 }
+form .text .input-file {
+  margin-bottom: 0;
+}
 form .text ul {
+  margin: 0;
   list-style: none;
   padding: 0 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   margin-block-start: 0;
+}
+form .text ul .file {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 form .text .close-btn {
   position: absolute;

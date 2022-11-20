@@ -5,6 +5,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
 }
 .modal .modal-container {
   position: absolute;
@@ -12,5 +13,14 @@
   left: 50%;
   transform: translate(-50%, -25%);
   background: white;
+}
+.modal .modal-container .close-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  background: inherit;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=modal.css.map */
