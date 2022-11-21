@@ -51,10 +51,11 @@ const Todo = ({todo}) => {
                     }
                     <div className="todo-preview">
                         <div className="todo-preview title">
-                            <span className="">{todo.title}</span>
+                            <span className={todo.checked || todo.expired ? "checked" : "unchecked"}>{todo.title}</span>
                             {todo.expired &&
                                 <span className="expired">- expired</span>
                             }
+                            <div className={todo.checked || todo.expired ? 'line-through' : ''}></div>
                         </div>
                         <span className="todo-preview date">{dayjs(todo.date).format('DD.MM.YYYY')} - {todo.time}</span>
                         <ul className="todo-preview files-list">
@@ -68,7 +69,6 @@ const Todo = ({todo}) => {
                                 )
                             })}
                         </ul>
-                        <div className={todo.checked || todo.expired ? 'line-through' : ''}></div>
                     </div> 
                 </div>
                     <div className="todo-container__actions">

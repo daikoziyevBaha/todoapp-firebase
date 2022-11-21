@@ -12,6 +12,11 @@
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .container .content {
+    width: 100%;
+  }
+}
 .container .content .todo-app {
   width: 100%;
   padding: 30px;

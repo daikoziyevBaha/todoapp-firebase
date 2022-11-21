@@ -47,18 +47,13 @@
         font-size: 16px;
         display: flex;
         flex-direction: row;
+        position: relative;
     }
     .date {
         font-size: 14px;
         color: grey;
     }
-    .line-through {
-        position: absolute;
-        height: 1px;
-        background: #bebebe;
-        top: 20%;
-        width: 100%;
-    }
+    
     .files-list {
         list-style: none;
         display: flex;
@@ -85,4 +80,16 @@
 
 .expired {
     color: red;
+}
+
+.line-through {
+    position: absolute;
+    height: 2px;
+    background: #bebebe;
+    top: 50%;
+    width: 100%;
+}
+
+.checked {
+    color: grey;
 }

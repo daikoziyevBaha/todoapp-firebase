@@ -80,6 +80,7 @@ const TodoForm = ({
                         </div>
                     )}
                 </div>
+                <span className="warning-line">When uploading files, please wait 5-10 secs!</span>
                 <button
                     className="create-btn"
                     onClick={handleSubmit}
