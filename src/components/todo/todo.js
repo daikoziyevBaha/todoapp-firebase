@@ -2,16 +2,28 @@ import React from "react";
 import './todo.css';
 import {XCircle, CheckCircleFill, Circle} from 'react-bootstrap-icons';
 import EditTodo from "../edit-todo";
-import firebase, { firestore } from "../../firebase";
+import { firestore } from "../../firebase";
 import dayjs from "dayjs";
 import { doc, deleteDoc, setDoc } from 'firebase/firestore';
 
+/**
+ * Todo component for manipulating one item
+ * @component
+ * @param {*} todo One todo from the list 
+ */
 const Todo = ({todo}) => {
 
+    /**
+     * Function to delete todo from firestore and state
+     * @param {*} todo Selected todo 
+     */
     const handleDeleteTodo = todo => {
         deleteDoc(doc(firestore, 'todos', todo.id))
     }
-
+    /**
+     * Function to change Check property in todo
+     * @param {*} todo 
+     */
     const handleCheckTodo = todo => {
        setDoc(doc(firestore, 'todos', todo.id), {
             ...todo,
@@ -38,20 +50,25 @@ const Todo = ({todo}) => {
                         )
                     }
                     <div className="todo-preview">
-                        <span className="todo-preview title">{todo.title}</span>
+                        <div className="todo-preview title">
+                            <span className="">{todo.title}</span>
+                            {todo.expired &&
+                                <span className="expired">- expired</span>
+                            }
+                        </div>
                         <span className="todo-preview date">{dayjs(todo.date).format('DD.MM.YYYY')} - {todo.time}</span>
                         <ul className="todo-preview files-list">
                             { todo.filesList && todo.filesList.map(file => {
                                 return (
                                     <li key={file.id} className="todo-preview files-list file-field">
-                                        <a href={file.url} target="_blank">
+                                        <a href={file.url} target="_blank" rel="noreferrer">
                                         {file.name}
                                         </a>
                                     </li>
                                 )
                             })}
                         </ul>
-                        <div className={todo.checked ? 'line-through' : ''}></div>
+                        <div className={todo.checked || todo.expired ? 'line-through' : ''}></div>
                     </div> 
                 </div>
                     <div className="todo-container__actions">

@@ -3,6 +3,12 @@ import Modal from "../modal";
 import './app.css';
 import TodoLayout from "../todo-layout";
 
+/**
+ * Main component of Todo app
+ * @component 
+ * 
+ */
+
 const App = () => {
     return (
         <main>

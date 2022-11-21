@@ -5,7 +5,13 @@ import Modal from "../modal";
 import './edit-todo.css';
 import { firestore } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { deleteObject, ref } from 'firebase/storage';
+import { storage } from "../../firebase";
 
+/**
+ * Component for updating todo
+ * @param {*} todo Current todo 
+ */
 const EditTodo = ({todo}) => {
     const [showModal, setShowModal] = useState(false)
     const [title, setTitle] = useState(todo.title)
@@ -13,9 +19,11 @@ const EditTodo = ({todo}) => {
     const [date, setDate] = useState(todo.date)
     const [time, setTime] = useState(todo.time)
     const [filesList, setFilesList] = useState(todo.filesList || [])
-    // const [selectedFile, setSelectedFile] = useState(null)
     
-    //Todo... validation for same filenames
+    /**
+     * Function to upload new file in storage
+     * @param {*} event Event consist information about files that were choosed
+     */
     const handleUploadFile = (event) => {
         const files = [...event.target.files];
         if (files.length >= 1) {
@@ -27,7 +35,10 @@ const EditTodo = ({todo}) => {
             });
         }
     }
-
+    /**
+     * Function to update todo in firestore
+     * @param {*} e Event object 
+     */
     const handleUpdateTodo = async e => {
         e.preventDefault()
         try {
@@ -43,6 +54,23 @@ const EditTodo = ({todo}) => {
             console.log(e);
         }
         setShowModal(false)
+    }
+    /**
+     * Function to delete file from storage and state
+     * @param {*} file Choosed file
+     */
+    const handleRemoveFile = (file) => {
+        const fileRef = ref(storage, file.path);
+        deleteObject(fileRef)
+            .then( res => {
+                const newFilesList = filesList.filter(prevFile => {
+                        return prevFile.id !== file.id
+                    })
+                setFilesList(newFilesList)
+                setDoc(doc(firestore, 'todos', todo.id), {
+                    filesList: newFilesList
+                })
+            })
     }
 
     return (
@@ -68,6 +96,7 @@ const EditTodo = ({todo}) => {
                     filesList = {filesList}
                     handleUploadFile = {handleUploadFile}
                     submitButtonTest = "Edit"
+                    handleRemoveFile={handleRemoveFile}
                 />
             </Modal>
         </div>

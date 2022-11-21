@@ -40,6 +40,8 @@
 }
 .todo-preview .title {
   font-size: 16px;
+  display: flex;
+  flex-direction: row;
 }
 .todo-preview .date {
   font-size: 14px;
@@ -71,5 +73,8 @@
 }
 .todo-preview .files-list a {
   text-decoration: none;
+}
+.expired {
+  color: red;
 }
 /*# sourceMappingURL=todo.css.map */

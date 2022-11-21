@@ -3,13 +3,16 @@ import './add-todo.css';
 import addIcon from '../../assets/images/plus.svg';
 import Modal from "../modal";
 import TodoForm from "../todo-form";
-import firebase, { firestore } from "../../firebase";
-import dayjs from "dayjs";
-import { doc, addDoc, collection } from "firebase/firestore";
+import { firestore } from "../../firebase";
+import { addDoc, collection } from "firebase/firestore";
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { v4 as uuid4 } from "uuid";
 
+/** 
+ * Component to add new todo in firestore
+ * @component
+*/
 const AddTodo = () => {
     const [showModal, setShowModal] = useState(false)
     const [title, setTitle] = useState('')
@@ -18,7 +21,10 @@ const AddTodo = () => {
     const [time, setTime] = useState('')
     const [filesList, setFilesList] = useState([])
     
-    //Todo... validation for same filenames
+    /**
+     * Function to upload new file in storage
+     * @param {*} event Event consist information about files that were choosed
+     */
     const handleUploadFile = (event) => {
         const files = [...event.target.files];
         if (files.length >= 1) {
@@ -39,7 +45,10 @@ const AddTodo = () => {
             });
         }
     }
-
+    /**
+     * Function to delete file from storage and state
+     * @param {*} file Choosed file
+     */
     const handleRemoveFile = (file) => {
         const fileRef = ref(storage, file.path);
         deleteObject(fileRef)
@@ -49,9 +58,10 @@ const AddTodo = () => {
                     })
                 setFilesList(newFilesList)
             })
-        console.log(filesList);
     }
-
+    /**
+     * Function to clear state after adding new todo in firestore
+     */
     const clearState = () => {
         setTitle('')
         setDescription('')
@@ -59,7 +69,10 @@ const AddTodo = () => {
         setTime(null)
         setFilesList([])
     }
-
+    /**
+     * Function submitting data from add todo form to firestore
+     * @param {*} e Event object to stop reloading page
+     */
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (title && description && date && time) {

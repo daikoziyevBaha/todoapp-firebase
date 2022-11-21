@@ -5,9 +5,13 @@ import { TodoContext } from '../../context';
 import  Spinner from "../spinner";
 import { filterTodoByAction } from "../../services";
 
+/**
+ * Component for rendering todos list, getting from useContext
+ * @component
+ */
+
 const TodoList = () => {
     const { todos, filter } = useContext(TodoContext)
-    console.log(filter);
     const filteredTodos = filterTodoByAction(todos, filter)
 
     return (

@@ -1,12 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import './header.css';
 import calendarIcon from '../../assets/images/calendar-icon.svg';
 import { TodoContext } from "../../context";
 
+/**
+ * Header component with filter buttons
+ * @component
+ */
+
 const Header = () => {
 
+    // useContext returns values from ContextProvider
     const {filter, setFilter} = useContext(TodoContext)
 
+    // Action buttons for filtering todos
     const actionBtns = [
         {
             name: "ALL",

@@ -1,6 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import './spinner.css';
 
+/**
+ * Neutral component that shows until todos appear
+ * @component 
+ */
 const Spinner = () => {
 
         return (
