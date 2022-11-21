@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 ## You need to clone project:
-git clone
+git clone https://github.com/daikoziyevBaha/todoapp-firebase.git
 
 ## Install all packages
 npm install
