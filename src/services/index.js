@@ -27,7 +27,7 @@ export const filterTodoByAction = (todos, action) => {
             return todos
         case 'ACTIVE':
             return todos.filter( todo => {
-                return !todo.checked
+                return !todo.checked && !todo.expired
             })
         case 'DONE':
             return todos.filter( todo => {
